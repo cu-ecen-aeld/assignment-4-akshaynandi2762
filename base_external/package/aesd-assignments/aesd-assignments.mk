@@ -15,13 +15,13 @@ AESD_ASSIGNMENTS_SITE_METHOD = git
 AESD_ASSIGNMENTS_GIT_SUBMODULES = YES
 
 define AESD_ASSIGNMENTS_BUILD_CMDS
-	$(MAKE) $(TARGET_CONFIGURE_OPTS) -C $(@D)/finder-app all
+	$(MAKE) $(TARGET_CONFIGURE_OPTS) -C $(@D)/finder-app writer
 endef
 
 define AESD_ASSIGNMENTS_INSTALL_TARGET_CMDS
 
 	# directories with scripts/utilities
-	$(INSTALL) -d 0755 $(@D)/conf/ $(TARGET_DIR)/etc/finder-app/conf/
+	$(INSTALL) -d 0755 $(TARGET_DIR)/etc/finder-app/conf/
 	$(INSTALL) -d 0755 $(TARGET_DIR)/usr/bin/
 
 	# writer binary
