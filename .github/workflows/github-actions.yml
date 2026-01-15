@@ -21,6 +21,7 @@ jobs:
             env:
               GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
             run: |
+              export BR2_DL_DIR=/home/akshaynandi/assignment4-part2/buildroot/
               export FORCE_UNSAFE_CONFIGURE=1
               ./full-test.sh
           - name: Cleanup
