@@ -18,7 +18,7 @@ jobs:
             with:
                 ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           - name: Cache Buildroot downloads
-          - uses: actions/cache@v4
+            uses: actions/cache@v4
             with:
                 path: buildroot/dl
                 key: buildroot-dl-${{ hashFiles('buildroot/.config') }}
