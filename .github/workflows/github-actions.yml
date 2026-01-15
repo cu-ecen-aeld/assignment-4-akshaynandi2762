@@ -17,11 +17,18 @@ jobs:
           - uses: webfactory/ssh-agent@v0.5.3
             with:
                 ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          - name: Cache downloads
+            uses: actions/cache@v4
+            with:
+              path: |
+                ~/.dl
+                ~/dl
+              key: ${{ runner.os }}-dl-${{ hashFiles('**/*.mk') }}
+
           - name: Run full test
             env:
               GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
             run: |
-              export BR2_DL_DIR=/home/akshaynandi/assignment4-part2/buildroot/
               export FORCE_UNSAFE_CONFIGURE=1
               ./full-test.sh
           - name: Cleanup
