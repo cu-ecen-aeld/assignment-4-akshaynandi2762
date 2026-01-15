@@ -9,7 +9,7 @@ jobs:
     full-test:
         container: cuaesd/aesd-autotest:24-assignment4-buildroot
         runs-on: self-hosted
-        timeout-minutes: 720
+        timeout-minutes: 240
         steps:
           - uses: actions/checkout@v4
           - name: Checkout submodules
@@ -17,16 +17,11 @@ jobs:
           - uses: webfactory/ssh-agent@v0.5.3
             with:
                 ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          - name: Prepare Buildroot download dir
-            run: |
-              mkdir -p buildroot/dl
           - name: Run full test
             env:
               GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
             run: |
               export FORCE_UNSAFE_CONFIGURE=1
-              export BR2_DL_DIR=$PWD/buildroot/.dl
-              # export BR2_DL_DIR=/github/home/.dl
               ./full-test.sh
           - name: Cleanup
             if: always()
