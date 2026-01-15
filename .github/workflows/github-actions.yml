@@ -23,8 +23,6 @@ jobs:
               path: |
                 ~/.dl
                 ~/dl
-              key: ${{ runner.os }}-dl-${{ hashFiles('**/*.mk') }}
-
           - name: Run full test
             env:
               GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
