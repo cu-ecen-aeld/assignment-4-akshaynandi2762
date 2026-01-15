@@ -25,8 +25,8 @@ jobs:
               GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
             run: |
               export FORCE_UNSAFE_CONFIGURE=1
-              # export BR2_DL_DIR=$PWD/buildroot/.dl
-              export BR2_DL_DIR=/github/home/.dl
+              export BR2_DL_DIR=$PWD/buildroot/.dl
+              # export BR2_DL_DIR=/github/home/.dl
               ./full-test.sh
           - name: Cleanup
             if: always()
